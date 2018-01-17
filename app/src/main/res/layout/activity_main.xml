@@ -4,30 +4,289 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hp.assignmentburpple.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:context="com.example.hp.assignmentburpple.activities.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:fitsSystemWindows="true"
+        app:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="300dp"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_foods_news_images"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax" />
+
+            <com.example.hp.assignmentburpple.components.PageIndicatorView
+                android:id="@+id/piv_foods_news_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/margin_medium_2"/>
+
+            <TextView
+                android:id="@+id/tv_app_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="burpple"
+                android:textColor="@color/white_full"
+                android:textSize="@dimen/text_heading_1x"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="center_vertical"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.AppBarOverlay">
+
+                <TextView
+                    android:id="@+id/tv_search_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_medium_2"
+                    android:background="@drawable/rectangle_white"
+                    android:drawableLeft="@drawable/ic_search_grey_24dp"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:padding="@dimen/margin_medium"
+                    android:text="Search e.g. Japanese in Orchard"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_regular_2x" />
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_featured"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_marginRight="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:text="FEATURED"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_small" />
+
+            <TextView
+                android:id="@+id/tv_promotion_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_featured"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_marginRight="@dimen/margin_medium_2"
+                android:text="Promotions"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <TextView
+                android:id="@+id/tv_see_more1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_promotion_title"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/margin_medium_2"
+                android:text="See More"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <com.example.hp.assignmentburpple.components.SmartRecyclerView
+                android:id="@+id/smv_promotion_items"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_see_more1"
+                android:layout_marginBottom="@dimen/margin_xlarge"
+                android:layout_marginTop="@dimen/margin_medium_2">
+
+            </com.example.hp.assignmentburpple.components.SmartRecyclerView>
+
+            <TextView
+                android:id="@+id/tv_latest1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/smv_promotion_items"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_marginRight="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:text="LATEST"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_small" />
+
+            <TextView
+                android:id="@+id/burpple_guide_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_latest1"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_marginRight="@dimen/margin_medium_2"
+                android:text="Burpple Guides"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <TextView
+                android:id="@+id/tv_see_more2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/burpple_guide_title"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/margin_medium_2"
+                android:text="See More"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <com.example.hp.assignmentburpple.components.SmartRecyclerView
+                android:id="@+id/smv_burpple_guide_items"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_see_more2"
+                android:layout_marginBottom="@dimen/margin_xlarge"
+                android:layout_marginTop="@dimen/margin_medium_2">
+
+            </com.example.hp.assignmentburpple.components.SmartRecyclerView>
+
+            <TextView
+                android:id="@+id/tv_latest2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/smv_burpple_guide_items"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_marginRight="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:text="LATEST"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_small" />
+
+            <TextView
+                android:id="@+id/news_and_trending_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_latest2"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_marginRight="@dimen/margin_medium_2"
+                android:text="News &amp; Trending"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <LinearLayout
+                android:id="@+id/ll_news_and_trending"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/news_and_trending_title"
+                android:layout_marginBottom="@dimen/margin_xlarge"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_small"
+                android:paddingLeft="@dimen/margin_medium"
+                android:paddingRight="@dimen/margin_medium"
+                android:paddingTop="@dimen/margin_small"
+                android:weightSum="2">
+
+                <include
+                    android:id="@+id/vp_newly_opened"
+                    layout="@layout/view_item_newly_opened"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/vp_trending_venues"
+                    layout="@layout/view_item_trending_venues"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_divider_line_1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/ll_news_and_trending"
+                android:src="@drawable/divider_margin_horizontal_line" />
+
+            <TextView
+                android:id="@+id/tv_explore_neighbourhoods"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_divider_line_1"
+                android:drawableLeft="@drawable/ic_location_on_grey_24dp"
+                android:drawablePadding="@dimen/margin_medium_2"
+                android:padding="@dimen/margin_medium_2"
+                android:text="Explore Neighbourhoods"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <ImageView
+                android:id="@+id/iv_divider_line_2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tv_explore_neighbourhoods"
+                android:src="@drawable/divider_margin_horizontal_line" />
+
+            <TextView
+                android:id="@+id/tv_explore_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_divider_line_2"
+                android:drawableLeft="@drawable/ic_location_on_grey_24dp"
+                android:drawablePadding="@dimen/margin_medium_2"
+                android:padding="@dimen/margin_medium_2"
+                android:text="Explore Categories"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_2x" />
+
+            <ImageView
+                android:id="@+id/divider_line_3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/tv_explore_categories"
+                android:layout_marginBottom="@dimen/margin_medium_3"
+                android:src="@drawable/divider_margin_horizontal_line" />
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <!--<android.support.design.widget.BottomNavigationView-->
+        <!--android:id="@+id/btn_nav_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--app:itemBackground="@color/white_full"-->
+        <!--app:itemIconTint="@color/accent"-->
+        <!--app:itemTextColor="@color/accent"-->
+        <!--app:menu="@menu/navigation_menu_item"/>-->
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--android:visibility="gone"-->
+        <!--app:srcCompat="@android:drawable/ic_dialog_email" />-->
 
 </android.support.design.widget.CoordinatorLayout>

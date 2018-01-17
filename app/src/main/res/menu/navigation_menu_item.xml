@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_explore"
+        android:enabled="true"
+        android:title="Explore"
+        android:icon="@drawable/ic_explore_grey_24dp"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/action_all_guides"
+        android:enabled="true"
+        android:title="All Guides"
+        android:icon="@drawable/ic_map_grey_24dp"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/action_add"
+        android:enabled="true"
+        android:title="Add"
+        android:icon="@drawable/ic_add_box_grey_24dp"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/action_activity"
+        android:enabled="true"
+        android:title="Activity"
+        android:icon="@drawable/ic_inbox_grey_24dp"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/action_profile"
+        android:enabled="true"
+        android:title="Profile"
+        android:icon="@drawable/ic_person_grey_24dp"
+        app:showAsAction="always"
+        />
+
+</menu>
